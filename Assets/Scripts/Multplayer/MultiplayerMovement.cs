@@ -34,6 +34,7 @@ public class MultiplayerMovement : NetworkBehaviour
         //player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        
         //Debug.Log(NetworkManager.networkAddress);
 
         //Aiming 
@@ -51,6 +52,7 @@ public class MultiplayerMovement : NetworkBehaviour
 
         //Move
         rb.MovePosition(rb.position + movement *moveSpeed * Time.fixedDeltaTime);
+        
 
         //Aim
         Vector2 lookDir = mousePos - rb.position; 
