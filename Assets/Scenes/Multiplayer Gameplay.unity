@@ -205,7 +205,7 @@ MonoBehaviour:
   OnServerDisconnected:
     m_PersistentCalls:
       m_Calls: []
-  port: 7777
+  port: 80
   NoDelay: 1
   serverMaxMessageSize: 16384
   serverMaxReceivesPerTick: 10000
@@ -231,7 +231,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1706872580}
-  networkAddress: localhost
+  networkAddress: 50.5.101.144
   maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60

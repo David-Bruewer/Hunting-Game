@@ -30,10 +30,11 @@ public class MultiplayerMovement : NetworkBehaviour
     void Update()
     {
         //Checks authority to only move 1 player 
-        if(!hasAuthority){return;}
+        if(!isLocalPlayer){return;}
         //player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        //Debug.Log(NetworkManager.networkAddress);
 
         //Aiming 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -46,7 +47,7 @@ public class MultiplayerMovement : NetworkBehaviour
     void FixedUpdate()
     {
         //Checks authority to only move 1 player 
-        if(!hasAuthority){return;}
+        if(!isLocalPlayer){return;}
 
         //Move
         rb.MovePosition(rb.position + movement *moveSpeed * Time.fixedDeltaTime);
