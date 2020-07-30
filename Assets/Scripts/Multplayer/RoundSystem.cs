@@ -1,19 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class RoundSystem : NetworkBehaviour
+
+public static class RoundSystem 
 {
-    // Start is called before the first frame update
-    void Start()
+    // boolean if the round can start
+    public static bool canStart; 
+
+    public static bool playerWon;
+
+    //Starts the round 
+    public static IEnumerator StartRound()
     {
+        yield return new WaitForSeconds(3f);
+        canStart = true; 
+        Debug.Log("Totally!");
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void EndRound()
     {
-        
+        canStart = false;
     }
+
+    
 }

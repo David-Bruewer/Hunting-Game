@@ -31,6 +31,8 @@ public class MultiplayerMovement : NetworkBehaviour
     {
         //Checks authority to only move 1 player 
         if(!isLocalPlayer){return;}
+        //checks if round can start 
+        if (!RoundSystem.canStart){return;}
         //player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -49,6 +51,9 @@ public class MultiplayerMovement : NetworkBehaviour
     {
         //Checks authority to only move 1 player 
         if(!isLocalPlayer){return;}
+
+        //checks if round can start 
+        if (!RoundSystem.canStart){return;}
 
         //Move
         rb.MovePosition(rb.position + movement *moveSpeed * Time.fixedDeltaTime);
