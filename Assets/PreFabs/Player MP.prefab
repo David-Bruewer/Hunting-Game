@@ -110,12 +110,13 @@ GameObject:
   - component: {fileID: 4820558990605967344}
   - component: {fileID: 8959601887138646209}
   - component: {fileID: 697284949785837197}
-  - component: {fileID: 6139239680183368384}
   - component: {fileID: 5377157895454228717}
   - component: {fileID: 4820558990605967349}
   - component: {fileID: 2389661784208257019}
   - component: {fileID: 8139607357979373920}
   - component: {fileID: -6210277374854604347}
+  - component: {fileID: 3800116805160302081}
+  - component: {fileID: -6646660623358477882}
   m_Layer: 0
   m_Name: Player MP
   m_TagString: Untagged
@@ -211,23 +212,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6139239680183368384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4820558990605967350}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8df290fc5444b44be3b5478f911928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 4847411229754865242}
-  arrowPrefab: {fileID: 18867985608442902, guid: 302af435257116c4299b14a2ceed8f02,
-    type: 3}
-  arrowForce: 30
-  fireRate: 0.75
 --- !u!58 &5377157895454228717
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -251,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4820558990605967350}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0f407df34bb07a46ac72eb8437ba40f, type: 3}
   m_Name: 
@@ -308,6 +292,44 @@ MonoBehaviour:
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
+--- !u!114 &3800116805160302081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820558990605967350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 1
+  syncInterval: 0
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 4820558991184875056}
+--- !u!114 &-6646660623358477882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820558990605967350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3460fa11cec9b349b1fe43e8156490d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  firePoint: {fileID: 4847411229754865242}
+  arrowPrefab: {fileID: 5517812885753732705, guid: 19833130905be164bafb8eddc10248aa,
+    type: 3}
+  arrowForce: 30
+  fireRate: 0.75
 --- !u!1 &4820558991184875057
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 
 --- !u!114 &4820558991184875069
 MonoBehaviour:
   m_ObjectHideFlags: 0
