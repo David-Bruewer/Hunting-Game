@@ -20,7 +20,11 @@ public class MultiplayerMovement : NetworkBehaviour
    Vector2 movement;
 
    //Aim Vector
-   Vector2 mousePos;
+   Vector2 mousePos; 
+
+    [SyncVar]
+    public bool canMove; 
+
 
    
 
@@ -31,8 +35,9 @@ public class MultiplayerMovement : NetworkBehaviour
     {
         //Checks authority to only move 1 player 
         if(!isLocalPlayer){return;}
+
         //checks if round can start 
-        if (!RoundSystem.canStart){return;}
+        if (!canMove){return;}
         //player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -53,7 +58,7 @@ public class MultiplayerMovement : NetworkBehaviour
         if(!isLocalPlayer){return;}
 
         //checks if round can start 
-        if (!RoundSystem.canStart){return;}
+        if (!canMove){return;}
 
         //Move
         rb.MovePosition(rb.position + movement *moveSpeed * Time.fixedDeltaTime);

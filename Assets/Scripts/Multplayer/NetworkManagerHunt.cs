@@ -10,7 +10,8 @@ using Mirror;
 public class NetworkManagerHunt : NetworkManager
 {
 	
-	//Adding round system Object 
+	//Adding round system Logic
+
 	
 
 
@@ -24,13 +25,15 @@ public class NetworkManagerHunt : NetworkManager
                 : Instantiate(playerPrefab);
 
 			
-
+			//player.GetComponent<MultiplayerMovement>().networkManager = gameObject;
             NetworkServer.AddPlayerForConnection(conn, player);
+			/*
 
 			if (numPlayers == maxConnections)
 			{
-				StartCoroutine(RoundSystem.StartRound());
+				canStart=true;
 			}
+			*/
 
 		}
 
@@ -40,7 +43,7 @@ public class NetworkManagerHunt : NetworkManager
 			if(numPlayers == 1)
 			{
 				Debug.Log("Hell yeah you fuckin won");
-				RoundSystem.EndRound();
+				
 			}
 
             // call base functionality (actually destroys the player)

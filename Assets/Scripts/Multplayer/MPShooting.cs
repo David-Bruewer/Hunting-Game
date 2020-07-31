@@ -30,10 +30,10 @@ public class MPShooting : NetworkBehaviour
     void CmdShoot()
     {
         GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        NetworkServer.Spawn(arrow);
-        arrow.GetComponent<Arrow>().shooter = gameObject;
+        arrow.GetComponent<MPArrow>().shooter = gameObject;
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
+        NetworkServer.Spawn(arrow);
     }
 
     IEnumerator ShootTimer()
