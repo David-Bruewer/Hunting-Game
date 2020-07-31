@@ -6,6 +6,7 @@ using Mirror;
 public class MPShooting : NetworkBehaviour
 {
   //Public objects
+    [SyncVar]
     public Transform firePoint;
     public GameObject arrowPrefab;
 

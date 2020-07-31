@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Cinemachine;
 
 
 public class MultiplayerMovement : NetworkBehaviour
@@ -22,9 +23,32 @@ public class MultiplayerMovement : NetworkBehaviour
    //Aim Vector
    Vector2 mousePos; 
 
+   public GameObject vcam;
+
+
+   //Public objects
+    public Transform firePoint;
+    public GameObject arrowPrefab;
+
+    public float arrowForce = 30f;
+
+    private bool allowFire = true;
+
+    public float fireRate = 0.75f;
+
     [SyncVar]
     public bool canMove; 
 
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        cam = Camera.main;
+
+        GameObject vCam = GameObject.Find("CM vcam1");
+        vCam.GetComponent<PlayerCameraController>().player = gameObject;
+        vCam.GetComponent<PlayerCameraController>().isFound = true; 
+
+    }
 
    
 
@@ -33,6 +57,7 @@ public class MultiplayerMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Camera.main.transform.localEulerAngles = new Vector3(0f,0f,0f);
         //Checks authority to only move 1 player 
         if(!isLocalPlayer){return;}
 
@@ -46,6 +71,12 @@ public class MultiplayerMovement : NetworkBehaviour
 
         //Aiming 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        if(Input.GetButtonDown("Fire1") && allowFire)
+        {
+            CmdShoot();
+            StartCoroutine(ShootTimer());
+        }
         
     }
 
@@ -68,5 +99,24 @@ public class MultiplayerMovement : NetworkBehaviour
         Vector2 lookDir = mousePos - rb.position; 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
+    }
+
+     [Command]
+    void CmdShoot()
+    {
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        arrow.GetComponent<MPArrow>().shooter = gameObject;
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
+        NetworkServer.Spawn(arrow);
+    }
+
+    IEnumerator ShootTimer()
+    {
+
+        allowFire = false;
+        yield return new WaitForSeconds(fireRate);
+        allowFire = true;
+
     }
 }

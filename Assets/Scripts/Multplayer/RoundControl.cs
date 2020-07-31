@@ -20,6 +20,7 @@ public class RoundControl : MonoBehaviour
     void Update()
     {
         gameReadyCheck();
+
     }
 
     public void gameReadyCheck()
@@ -47,6 +48,17 @@ public class RoundControl : MonoBehaviour
                 {
                     mm.canMove = true; 
                 }
+            }
+        }
+    }
+
+    public void gameOverCheck()
+    {
+        if (isGameReady)
+        {
+            if(players.Count == 1)
+            {
+                isGameReady = false;
             }
         }
     }
