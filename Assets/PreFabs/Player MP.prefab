@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 8139607357979373920}
   - component: {fileID: -6210277374854604347}
   - component: {fileID: 3800116805160302081}
+  - component: {fileID: 2160659419125835576}
   m_Layer: 0
   m_Name: Player MP
   m_TagString: Player
@@ -280,6 +281,7 @@ MonoBehaviour:
     type: 3}
   arrowForce: 30
   fireRate: 0.75
+  hasWon: 0
   canMove: 0
 --- !u!114 &-6210277374854604347
 MonoBehaviour:
@@ -318,6 +320,21 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 4820558991184875056}
+--- !u!114 &2160659419125835576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820558990605967350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c12b16ae164634c8cce5ab043d40ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  player: {fileID: 4820558990605967350}
 --- !u!1 &4820558991184875057
 GameObject:
   m_ObjectHideFlags: 0

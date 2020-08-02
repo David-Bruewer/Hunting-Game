@@ -36,6 +36,8 @@ public class MultiplayerMovement : NetworkBehaviour
 
     public float fireRate = 0.75f;
 
+    public bool hasWon;
+
     [SyncVar]
     public bool canMove; 
 
@@ -78,6 +80,14 @@ public class MultiplayerMovement : NetworkBehaviour
             StartCoroutine(ShootTimer());
         }
         
+        if(hasWon)
+        {
+            PlayerData.didWin = true;
+            gameObject.GetComponent<NetworkIdentity>().connectionToServer.Disconnect();
+            hasWon = false;
+        }
+
+        
     }
 
 
@@ -110,6 +120,7 @@ public class MultiplayerMovement : NetworkBehaviour
         rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
         NetworkServer.Spawn(arrow);
     }
+
 
     IEnumerator ShootTimer()
     {

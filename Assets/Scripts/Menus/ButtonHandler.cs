@@ -11,6 +11,11 @@ public class ButtonHandler : MonoBehaviour
         SceneManager.LoadScene(1); 
    }
 
+   public void StartMultiplayerGame()
+   {
+       SceneManager.LoadScene(3);
+   }
+
     //Exits game 
    public void ExitGame()
    {

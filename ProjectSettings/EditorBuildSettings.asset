@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Start Menu.unity
     guid: b13974a0e4d36aa4c90b4f690b9a5b9e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SinglePlayerGameplay.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 8ae44d8b27fffda46830b24b10df9d58
   - enabled: 1
     path: Assets/Scenes/Multiplayer Gameplay.unity
     guid: df18d7f3d9c85364bb5fb7c99e7dc179
+  - enabled: 1
+    path: Assets/Scenes/MPGameOver.unity
+    guid: d1744bb7860700e46826a8719492cb0c
   m_configObjects: {}

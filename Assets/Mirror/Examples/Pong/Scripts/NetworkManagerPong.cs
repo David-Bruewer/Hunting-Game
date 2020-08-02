@@ -36,5 +36,6 @@ namespace Mirror.Examples.Pong
             // call base functionality (actually destroys the player)
             base.OnServerDisconnect(conn);
         }
+
     }
 }
