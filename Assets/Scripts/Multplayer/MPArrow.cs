@@ -17,6 +17,7 @@ public class MPArrow : NetworkBehaviour
         //if Mole is shot, add 10 (make changeable later?)
         if(collision.gameObject.tag == "Mole"){
             shooter.GetComponent<Hunger>().hunger +=5; 
+            Debug.Log(shooter.GetComponent<Hunger>().hunger);
         }
         
         

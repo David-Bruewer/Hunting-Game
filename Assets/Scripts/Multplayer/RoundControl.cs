@@ -10,7 +10,8 @@ public class RoundControl : NetworkBehaviour
     [SyncVar]
     public bool isGameReady; 
 
-    
+    [SyncVar]
+    public int numPlayers;     
     public List<MultiplayerMovement> players = new List<MultiplayerMovement>();
     public int minPlayers = 2;
 
@@ -26,7 +27,8 @@ public class RoundControl : NetworkBehaviour
     {
         gameReadyCheck();
         gameOverCheck();
-        Debug.Log(players.Count);
+        //Debug.Log(players.Count);
+        //Debug.Log(isGameReady);
 
     }
 
@@ -52,7 +54,6 @@ public class RoundControl : NetworkBehaviour
                 foreach (MultiplayerMovement mm in players) 
                 {
                     mm.hasWon = true;
-                    Debug.Log("penis");
                 }
                 
                 players.Clear();
@@ -62,22 +63,22 @@ public class RoundControl : NetworkBehaviour
     }
 
     private IEnumerator countdown()
-    {
-        mainBox.text = "3";
-        yield return new WaitForSeconds(1f); 
-        mainBox.text = "2";
-        yield return new WaitForSeconds(1f);
-        mainBox.text = "1";
-        yield return new WaitForSeconds(1f);
-        mainBox.text = "GO!";
-        isGameReady = true; 
+    {   /*
+        foreach(MultiplayerMovement mm in players)
+            {
+                mm.StartGame();
+                    
+            }
+        */
+        yield return new WaitForSeconds(3f);
         foreach(MultiplayerMovement mm in players)
             {
                 mm.canMove = true;
                     
             }
-        yield return new WaitForSeconds(1f);
-        mainBox.text = "";
+
+            isGameReady = true;
+      
          
     }
 }

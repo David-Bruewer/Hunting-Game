@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
 using Cinemachine;
 
@@ -36,10 +37,15 @@ public class MultiplayerMovement : NetworkBehaviour
 
     public float fireRate = 0.75f;
 
+    [SyncVar]
     public bool hasWon;
 
     [SyncVar]
     public bool canMove; 
+
+    public GameObject player;
+
+    public GameObject cDown;
 
     public override void OnStartLocalPlayer()
     {
@@ -49,6 +55,12 @@ public class MultiplayerMovement : NetworkBehaviour
         GameObject vCam = GameObject.Find("CM vcam1");
         vCam.GetComponent<PlayerCameraController>().player = gameObject;
         vCam.GetComponent<PlayerCameraController>().isFound = true; 
+
+        GameObject scoreBoard = GameObject.Find("Score Canvas");
+        scoreBoard.GetComponent<Score>().player = player;
+
+        cDown = GameObject.Find("CountDown");
+       // player.GetComponent<Hunger>().cdText = cDown.GetComponent<Text>();
 
     }
 
@@ -76,14 +88,16 @@ public class MultiplayerMovement : NetworkBehaviour
 
         if(Input.GetButtonDown("Fire1") && allowFire)
         {
-            CmdShoot();
+            Shoot();
             StartCoroutine(ShootTimer());
         }
+
+         player.GetComponent<Hunger>().gameStarted = true;
         
         if(hasWon)
         {
             PlayerData.didWin = true;
-            gameObject.GetComponent<NetworkIdentity>().connectionToServer.Disconnect();
+            player.GetComponent<NetworkIdentity>().connectionToServer.Disconnect();
             hasWon = false;
         }
 
@@ -112,14 +126,32 @@ public class MultiplayerMovement : NetworkBehaviour
     }
 
      [Command]
-    void CmdShoot()
+    void CmdShoot(GameObject arrow)
     {
-        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-        arrow.GetComponent<MPArrow>().shooter = gameObject;
-        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
         NetworkServer.Spawn(arrow);
     }
+
+    void Shoot()
+    {
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
+        //NetworkServer.Spawn(arrow);
+        arrow.GetComponent<MPArrow>().shooter = player;
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * arrowForce, ForceMode2D.Impulse);
+        Debug.Log("ASLDIFJWIUEH");
+        CmdShoot(arrow);
+
+    }
+
+    
+    /*public void StartGame()
+    {
+        cDown.GetComponent<CountdownController>().StartCount();
+
+       
+    }
+    */
+    
 
 
     IEnumerator ShootTimer()
@@ -129,5 +161,11 @@ public class MultiplayerMovement : NetworkBehaviour
         yield return new WaitForSeconds(fireRate);
         allowFire = true;
 
+    }
+
+    IEnumerator ThreeSeconds()
+    {
+        yield return new WaitForSeconds (3f);
+         player.GetComponent<Hunger>().gameStarted = true;
     }
 }

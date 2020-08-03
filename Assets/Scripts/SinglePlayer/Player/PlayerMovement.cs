@@ -20,11 +20,14 @@ public class PlayerMovement : MonoBehaviour
    //Aim Vector
    Vector2 mousePos;
 
+   public bool canMove; 
+
    
 
     // Update is called once per frame
     void Update()
     {
+        if(!canMove){return;}
         //player movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

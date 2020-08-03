@@ -6,7 +6,7 @@ using Mirror;
 public class MPScoreKeeping : NetworkBehaviour
 {
     public GameObject player; 
-    bool connected; 
+    bool disconnected; 
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,11 @@ public class MPScoreKeeping : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (connected) {return;}
+        if (disconnected) {return;}
         if (player.GetComponent<Hunger>().hunger <= 0)
         {
             player.GetComponent<NetworkIdentity>().connectionToServer.Disconnect();
-            connected = true;
+            disconnected = true;
         }
         
     }

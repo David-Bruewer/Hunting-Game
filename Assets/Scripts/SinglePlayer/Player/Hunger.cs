@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hunger : MonoBehaviour
 {
+   //public bool gameReady;
+    public bool gameStarted;
+    public float hunger;
 
-    public float hunger = 20f;
+    //public Text cdText;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Countdown());
     }
 
     // Update is called once per frame
     void Update()
-    {
-        HungerDown();
+    {  // if(gameReady && !gameStarted)
+        //{
+           // StartCoroutine(Countdown());
+        //}
+        if (gameStarted)
+        {
+            HungerDown();
+        }
     }
 
     //Method which decreases hunger
@@ -25,8 +34,18 @@ public class Hunger : MonoBehaviour
     }
 
     //Wait 5 seconds before hunger goes down
-    IEnumerator Countdown()
+   /* IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(5f);
+        cdText.text = "3";
+        yield return new WaitForSeconds(1f);
+        cdText.text = "2";
+        yield return new WaitForSeconds(1f);
+        cdText.text = "1";
+        yield return new WaitForSeconds(1f);
+        cdText.text = "Go!"; 
+        gameStarted = true;
+        yield return new WaitForSeconds(1f);
+        cdText.text = "";
     }
+    */
 }
