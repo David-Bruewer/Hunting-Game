@@ -13,7 +13,7 @@ public class RoundControl : NetworkBehaviour
     [SyncVar]
     public int numPlayers;     
     public List<MultiplayerMovement> players = new List<MultiplayerMovement>();
-    public int minPlayers = 2;
+    public int minPlayers;
 
     public Text mainBox; 
     // Start is called before the first frame update

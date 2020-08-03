@@ -236,7 +236,7 @@ MonoBehaviour:
   isGameReady: 0
   numPlayers: 0
   players: []
-  minPlayers: 2
+  minPlayers: 4
   mainBox: {fileID: 689204743}
 --- !u!114 &62150435
 MonoBehaviour:
