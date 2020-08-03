@@ -60,5 +60,6 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         canMove = true; 
+        gameObject.GetComponent<Hunger>().gameStarted = true;
     }
 }

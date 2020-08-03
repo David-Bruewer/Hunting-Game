@@ -11,4 +11,5 @@ Have fun!
 # How To Install
 1. Download Current-Build.zip from https://github.com/David-Bruewer/Hunting-Game/
 2. Extract Folder 
-3. Open the Hunting App, The multiplayer settings should default to the Server  
+3. Open the Builds Folder
+3. Open Hunting.exe, The multiplayer settings should default to the Server  
