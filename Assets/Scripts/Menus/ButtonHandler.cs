@@ -9,6 +9,7 @@ public class ButtonHandler : MonoBehaviour
    public void StartSinglePlayerGame()
    {
         SceneManager.LoadScene(1); 
+        Debug.Log("button clicked");
    }
 
    public void StartMultiplayerGame()
