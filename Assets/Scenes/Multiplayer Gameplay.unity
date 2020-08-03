@@ -1654,7 +1654,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   transport: {fileID: 1706872580}
-  networkAddress: localhost
+  networkAddress: ec2-52-14-204-187.us-east-2.compute.amazonaws.com
   maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60

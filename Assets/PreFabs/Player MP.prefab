@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f407df34bb07a46ac72eb8437ba40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStarted: 0
   hunger: 30
 --- !u!114 &2389661784208257019
 MonoBehaviour:
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  moveSpeed: 5
+  moveSpeed: 8
   rb: {fileID: 697284949785837197}
   cam: {fileID: 1153195276685608608, guid: fa5b1a0c365a8f6499795f286e06d397, type: 3}
   vcam: {fileID: 0}
@@ -184,6 +185,8 @@ MonoBehaviour:
   hasWon: 0
   canMove: 0
   player: {fileID: 4820558990605967350}
+  cDown: {fileID: 0}
+  countdown: 0
 --- !u!114 &-6210277374854604347
 MonoBehaviour:
   m_ObjectHideFlags: 0

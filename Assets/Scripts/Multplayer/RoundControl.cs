@@ -63,13 +63,13 @@ public class RoundControl : NetworkBehaviour
     }
 
     private IEnumerator countdown()
-    {   /*
+    {   
         foreach(MultiplayerMovement mm in players)
             {
-                mm.StartGame();
+                mm.countdown = true;
                     
             }
-        */
+        
         yield return new WaitForSeconds(3f);
         foreach(MultiplayerMovement mm in players)
             {

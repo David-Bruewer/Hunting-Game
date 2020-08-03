@@ -47,6 +47,9 @@ public class MultiplayerMovement : NetworkBehaviour
 
     public GameObject cDown;
 
+    [SyncVar]
+    public bool countdown; 
+
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
@@ -74,6 +77,13 @@ public class MultiplayerMovement : NetworkBehaviour
         //Camera.main.transform.localEulerAngles = new Vector3(0f,0f,0f);
         //Checks authority to only move 1 player 
         if(!isLocalPlayer){return;}
+        
+        if(countdown)
+        {
+            countdown = false;
+            StartCoroutine(ThreeSeconds());
+            cDown.GetComponent<CountdownController>().StartCount();
+        }
 
         //checks if round can start 
         if (!canMove){return;}
@@ -92,8 +102,6 @@ public class MultiplayerMovement : NetworkBehaviour
             StartCoroutine(ShootTimer());
         }
 
-         player.GetComponent<Hunger>().gameStarted = true;
-        
         if(hasWon)
         {
             PlayerData.didWin = true;
@@ -166,6 +174,6 @@ public class MultiplayerMovement : NetworkBehaviour
     IEnumerator ThreeSeconds()
     {
         yield return new WaitForSeconds (3f);
-         player.GetComponent<Hunger>().gameStarted = true;
+        player.GetComponent<Hunger>().gameStarted = true;
     }
 }

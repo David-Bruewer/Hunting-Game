@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,7 +23,14 @@ public class PlayerMovement : MonoBehaviour
 
    public bool canMove; 
 
-   
+   public Text CDText;
+
+   private void Start() 
+   {
+       CDText.GetComponent<CountdownController>().StartCount();
+       StartCoroutine(ThreeSeconds());
+
+   }
 
     // Update is called once per frame
     void Update()
@@ -46,5 +54,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDir = mousePos - rb.position; 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
+    }
+
+    IEnumerator ThreeSeconds()
+    {
+        yield return new WaitForSeconds(3f);
+        canMove = true; 
     }
 }

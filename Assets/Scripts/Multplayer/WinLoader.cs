@@ -19,6 +19,7 @@ public class WinLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerData.didWin = false;
         
     }
 }

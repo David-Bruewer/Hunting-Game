@@ -910,6 +910,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1166519372514848582, guid: 9d8e20e2d7ffcb542a34b7166694e44f,
+        type: 3}
+      propertyPath: CDText
+      value: 
+      objectReference: {fileID: 2060939101}
     - target: {fileID: 7217594622219133331, guid: 9d8e20e2d7ffcb542a34b7166694e44f,
         type: 3}
       propertyPath: player
@@ -1315,6 +1320,7 @@ GameObject:
   - component: {fileID: 2060939100}
   - component: {fileID: 2060939102}
   - component: {fileID: 2060939101}
+  - component: {fileID: 2060939103}
   m_Layer: 5
   m_Name: CountDown
   m_TagString: Untagged
@@ -1382,6 +1388,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060939099}
   m_CullTransparentMesh: 0
+--- !u!114 &2060939103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060939099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98f1337ff5a206429ad0f5a78585d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CD: {fileID: 2060939101}
 --- !u!1001 &2944211474471659415
 PrefabInstance:
   m_ObjectHideFlags: 0
