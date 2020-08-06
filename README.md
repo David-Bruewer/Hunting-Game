@@ -13,4 +13,5 @@ Have fun!
 2. Extract Folder 
 3. Open the Builds Folder
 4. Open Hunting.exe, The multiplayer settings should default to the correct server 
-    note: there is an issue on certain computers where the game can't advance past the menu screen. This issue is being looked into and will be addressed in a future update 
+    
+Note: there is an issue on certain computers where the game can't advance past the menu screen. This issue is being looked into and will be addressed in a future update 
