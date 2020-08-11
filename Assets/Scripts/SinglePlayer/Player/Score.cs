@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null) { return; }
         scoreText.text = player.GetComponent<Hunger>().hunger.ToString("f2");
         if(scoreText.text == "0.02")
         {
