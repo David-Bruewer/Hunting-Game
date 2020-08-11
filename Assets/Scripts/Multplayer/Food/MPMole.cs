@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+//Class which defines the behavior of the Mole enemy while Online 
 public class MPMole : NetworkBehaviour
 {
 
-
-    Vector2 movement; 
+    //Movement Vector
+    Vector2 movement;
+    
+    //boolean to check if mole can move 
     private bool canMove = true;
 
+    //Mole rigidbody 
     public Rigidbody2D rb;  
 
+    //Moles Movement Speed 
     public float moveSpeed = 5f;
 
     
     // Update is called once per frame
     void Update()
     {
+        //If mole can walk, start walking 
         if (canMove)
         {
             StartCoroutine(Walk());
@@ -30,8 +36,10 @@ public class MPMole : NetworkBehaviour
         
     }
 
+    //Called if mole collides with object 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //If mole is shot, despawn  
         if(collision.gameObject.tag == "Arrow")
         {
             Destroy(gameObject);
@@ -40,7 +48,7 @@ public class MPMole : NetworkBehaviour
         }      
     }
 
-
+    //Walking Coroutine, walks in one direction for 3 seconds then changes direction 
     IEnumerator Walk()
     {   
         canMove = false;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Mirror;
 using Cinemachine;
 
-
+//Class which describes movement and Camera behaviors for Players on multiplayer
 public class MultiplayerMovement : NetworkBehaviour
 {
    

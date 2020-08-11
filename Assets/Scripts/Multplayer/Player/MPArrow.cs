@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+//Class which defines Arrow behavior on Server 
 public class MPArrow : NetworkBehaviour
 {
     //Amount of time arrow exists
